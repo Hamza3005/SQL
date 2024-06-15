@@ -1,0 +1,24 @@
+WITH house AS (
+    SELECT 
+        price_paid,
+        deed_date::DATE AS deed_date,
+        postcode,
+        LEFT(postcode, POSITION(' ' IN postcode) - 1) AS postcode_first_part,
+        property_type,
+        estate_type,
+        street,
+        transaction_category
+    FROM 
+        house_prices
+)
+SELECT 
+  price_paid,
+    deed_date,
+    postcode,
+    postcode_first_part,
+    property_type,
+    estate_type,
+    street,
+    transaction_category
+FROM 
+    house;
